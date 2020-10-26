@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Calculadora com JavaScript">
+        <meta name="keywords" content="">
+        <meta name="author" content="Thyago França">
+
+		<title>Calculadora com JavaScript</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+		<script type="text/javascript">
+
+		function calcular() {
+
+			var operacao = document.getElementById('operacao').value; // codigo para capturar as operações dentro do <select>
+				
+			var num1 = document.getElementById('num1').value; // para recuperar num1 no input 1
+			var num2 = document.getElementById('num2').value; // para recuperar num1 no input 2
+
+			num1 = parseFloat(num1); // para forçar o tipo de variaveis numéricas e não textuais
+			num2 = parseFloat(num2); // para forçar o tipo de variaveis numéricas e não textuais
+
+
+			if(isNaN(num1)) { 
+				alert('Favor digitar um número válido para operação ( primeiro campo )');
+				return false;
+			}
+
+			if(isNaN(num2)) {
+				alert('Favor digitar um número válido para operação ( segundo campo )');
+				return false;
+			}
+
+			var resultado = null;
+
+			switch(operacao){
+				case '1':
+				resultado = num1 + num2;
+				break;
+
+				case '2':
+				resultado = num1 - num2;
+				break;
+
+				case '3':
+				resultado = num1 * num2;
+				break;
+
+				case '4':
+				resultado = num1 / num2;
+				break;
+
+				default:
+					alert('Selecione uma operação'); 
+					return false;
+			}
+			document.getElementById('resultado').value = resultado; 				 
+		}
+			
+		</script>
+	</head>
+
+	<body>
+		
+		<div class="container">
+			<div class="jumbotron">
+				<h1 style="text-align: center;">CALCULADORA</h1>
+			</div>
+
+			<hr>
+
+			<div class="row">
+				<div class="col-md-4">
+					<input id="num1" type="text" class="form-control" placeholder="Digite um número" />
+				</div>
+
+				<div class="col-md-4">
+					<select id="operacao" class="form-control">
+						<option value="">Selecione uma operação</option>
+						<option value="1">Adição</option>
+						<option value="2">Subtração</option>
+						<option value="3">Multiplicação</option>
+						<option value="4">Divisão</option>
+					</select>
+				</div>
+
+				<div class="col-md-4">
+					<input id="num2" type="text" class="form-control" placeholder="Digite um número"/>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="row justify-content-center">
+				<div class="col-md-3 text-center">
+					<button type="button" class="btn btn-primary" onclick="calcular()">Calcular</button>
+				</div>
+			</div>
+
+			<hr>
+
+			<div class="well">
+				Resultado: <input id="resultado" type="text" class="form-control" readonly>
+				<!-- readonly Defina um campo de texto como somente leitura: -->
+			</div>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+	</body>
+</html>
